@@ -1,0 +1,12 @@
+name: di-ml-deploy-with-emr-and-pyspark
+
+services:
+  terraform:
+    build: .
+    image: di-ml-deploy-with-emr-and-pyspark:dev
+    container_name: di-ml-deploy-with-emr-and-pyspark
+      - .env
+    volumes:
+      - ./terraform:/home/ubuntu/data-projects/di-ml-deploy-with-emr-and-pyspark/terraform
+    restart: unless-stopped
+    command: ["tail", "-f", "/dev/null"]
